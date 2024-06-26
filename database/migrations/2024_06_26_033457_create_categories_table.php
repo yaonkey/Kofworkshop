@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('toy_schemas', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('filepath')->nullable(false);
+            $table->string('title')->nullable(false);
+            $table->text('description');
+            $table->boolean('is_visible')->default(true);
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('toy_schemas');
+        Schema::dropIfExists('categories');
     }
 };
